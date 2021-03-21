@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { useAuth } from '../AuthContext'
 import firebase from '../firebase'
 
-export const Navbar = () => {
+const Navbar = () => {
     const {isAuth, handleSignIn} = useAuth()
     const handleSignOut = () => firebase.auth().signOut()
 
@@ -22,3 +22,5 @@ export const Navbar = () => {
         </nav>
     )
 }
+
+export default Navbar

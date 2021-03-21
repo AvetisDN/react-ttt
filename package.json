@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^12.8.3",
     "concurrently": "^6.0.0",
     "cors": "^2.8.5",
+    "esm": "^3.2.25",
     "express": "^4.17.1",
     "faunadb": "^4.1.1",
     "firebase": "^8.3.0",
@@ -29,7 +30,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "server": "nodemon -r esm server/index.js",
-    "dev": "concurrently \"nodemon ./server/index.js\" \"react-scripts start\""
+    "dev": "concurrently \"nodemon -r esm  ./server/index.js\" \"react-scripts start\""
   },
   "eslintConfig": {
     "extends": [

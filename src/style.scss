@@ -1,13 +1,247 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+  --primary-color: #28df99;
+  font-family: sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  margin: 0;
+}
+
+button {
+  padding: 1rem 2rem;
+}
+
+%flex-complete-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.app-component {
+  @extend %flex-complete-center;
+  height: calc(100% - 80px);
+  width: 100%;
+}
+
+.navbar {
+  height: 80px;
+  background-color: #212121;
+  color: #ffffff;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+.loading-component {
+  @extend %flex-complete-center;
+  width: 100%;
+  height: 100%;
+}
+
+.loading-div {
+  border: 3px solid #10442f;
+  border-top-color: var(--primary-color);
+  border-radius: 50%;
+  width: 3em;
+  height: 3em;
+  animation: spin 1s linear infinite;
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}
+
+.form-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  max-width: 95%;
+  box-sizing: border-box;
+
+  form {
+    width: 450px;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    > div {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 20px;
+    }
+
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 54px;
+      height: 28px;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 20px;
+      width: 20px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
+
+    input:checked+.slider {
+      background-color: var(--primary-color);
+    }
+
+    input:focus+.slider {
+      box-shadow: 0 0 1px var(--primary-color);
+    }
+
+    input:checked+.slider:before {
+      -webkit-transform: translateX(26px);
+      -ms-transform: translateX(26px);
+      transform: translateX(26px);
+    }
+
+    /* Rounded sliders */
+    .slider.round {
+      border-radius: 34px;
+    }
+
+    .slider.round:before {
+      border-radius: 50%;
+    }
+  }
+}
+
+.button-primary {
+  color: #fff;
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+
+  &:hover {
+    background-color: #2df3a7;
+    border-color: #2df3a7;
+  }
+}
+
+.button-secondary {
+  color: #212121;
+  background-color: #ffffff;
+  border-color: var(--primary-color);
+
+  color: #fff;
+  background-color: #0d7377;
+  border-color: #0d7377;
+
+  &:hover {
+    background-color: #118b8f;
+    border-color: #118b8f;
+  }
+}
+
+.home-private-page {
+  .container {
+    @extend %flex-complete-center;
+    border-radius: 10px;
+    width: 500px;
+    max-width: 95%;
+    height: 400px;
+
+    button {
+      width: 280px;
+      height: 50px;
+      max-width: 95%;
+    }
+
+    button:nth-of-type(2) {
+      margin: 15px 0;
+    }
+  }
+}
+
+.game-room {
+
+  .status {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  #board {
+    border-collapse: collapse;
+    font-family: monospace;
+  }
+
+  #winner {
+    margin-top: 25px;
+    width: 168px;
+    text-align: center;
+  }
+
+  td {
+    text-align: center;
+    font-weight: bold;
+    font-size: 25px;
+    color: #555;
+    width: 100px;
+    height: 100px;
+    line-height: 50px;
+    border: 3px solid #aaa;
+    background: #fff;
+  }
+
+  td.active {
+    cursor: pointer;
+    background: #eeffe9;
+  }
+
+  td.active:hover {
+    background: #eeffff;
+  }
+
+  .buttons-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+
+    button:nth-of-type(1) {
+      background-color: #28df99;
+
+      &.restart-game-button {
+        background-color: #facf5a;
+        margin: 0 auto;
+      }
+    }
+
+    button:nth-of-type(2) {
+      background-color: #086972;
+      color: #ffffff;
+    }
+
+  }
 }

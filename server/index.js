@@ -1,5 +1,5 @@
 const express = require('express')
-const http = requre('http')
+const http = require('http')
 const cors = require('cors')
 const socket = require('socket.io')
 const {updateBoard, updateTeam} = require('../src/faunadb')
@@ -13,7 +13,7 @@ const server = http.createServer(app)
 
 const ws = socket(server, {
     cors: {
-        origin: '<http://localhost:3000>',
+        origin: 'http://localhost:3000',
         methods: ['GET','POST']
     }
 })
@@ -31,7 +31,7 @@ ws.on('connection', (socket) => {
             .then((res) => {
                 const newPlayers = [...players, {[team]: res[team]}]
                 socket.emit('SET_TEAM', team)
-                ws.in(roomID).emit('CHHOSE_TEAM', newPlayers)
+                ws.in(roomID).emit('CHOOSE_TEAM', newPlayers)
             })
             .catch((err) => console.error(err))
     })

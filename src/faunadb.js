@@ -8,7 +8,7 @@ const client = new faunadb.Client({secret})
 
 const getRoom = (roomID) => client.query( q.Get(q.Match(q.Index('room_by_id'), roomID)) )
 const checkRoomExist = (roomID) => {
-    getRoom(roomID)
+    return getRoom(roomID)
         .then((res) => {
             return client.query( q.Exists(q.Ref(q.Collection('Rooms'), res.ref.value.id)) )
         })

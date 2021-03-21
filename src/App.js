@@ -1,6 +1,6 @@
 import {BrowserRouter as Router} from 'react-router-dom'
 
-import AuthContext, {AuthProvider} from './AuthContext'
+import {AuthProvider} from './AuthContext'
 import {PublicRoute, PrivateRoute} from './routes'
 
 import Navbar from './components/Navbar'

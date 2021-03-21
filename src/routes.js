@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import {Route, Redirect} from 'react-router-dom'
 import {useAuth} from './AuthContext'
 
@@ -17,7 +17,7 @@ export const PublicRoute = ({component: Component, ...rest}) => {
     const {isAuth} = useAuth()
     return(
         <Route {...rest} render={props => (
-                isAuth && restricted ? <Redirect to='/home' /> : <Component {...props} />
+                isAuth ? <Redirect to='/home' /> : <Component {...props} />
             )
         }
         />
